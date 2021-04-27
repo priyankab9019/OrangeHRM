@@ -7,10 +7,14 @@ import org.testng.annotations.Test;
 
 import hrm.drivermanager.com.InitializeDriver;
 import hrm.main.com.Login;
+import hrm.utility.com.PropertyManager;
 
 public class TC001_Login 
 {
 	WebDriver driver;
+	String uName=PropertyManager.getData("username","config");
+	String pwd=PropertyManager.getData("password","config");
+	String baseURL=PropertyManager.getData("URL","config");
 	Login loginObj=new Login();
 	 @BeforeTest
 	  public void beforeTest() 
@@ -20,12 +24,11 @@ public class TC001_Login
 	 @Test
 	 public void loginHRM()
 	 {
-		 loginObj.log_in();		 
+		 loginObj.log_in(uName, pwd, baseURL);		 
 	 }
 	 @AfterTest
 	 public void LogoutHRM()
 	 {
 		 
 	 }
-
 }
